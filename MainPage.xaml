@@ -1,0 +1,34 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:MauiApp2"
+             x:Class="MauiApp2.MainPage"
+             BackgroundColor="{DynamicResource PageBackgroundColor}">
+
+    <Grid x:Name="mainGrid">
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="Auto"/>
+        </Grid.ColumnDefinitions>
+
+
+        <BlazorWebView x:Name="blazorWebView" HostPage="wwwroot/index.html" Grid.Row="1" Grid.ColumnSpan="2" HorizontalOptions="Fill" VerticalOptions="Fill" >
+            <BlazorWebView.RootComponents>
+                <RootComponent Selector="#app" ComponentType="{x:Type local:Components.Routes}" />
+            </BlazorWebView.RootComponents>
+        </BlazorWebView>
+
+        <StackLayout Orientation="Horizontal">
+            <Button x:Name="myButton" Clicked="myButton_Clicked" Text="Async" />
+            <Button x:Name="myButton2" Clicked="myButton2_Clicked" Text="Sync using Task" />
+            <Button x:Name="myButton3" Clicked="myButton3_Clicked" Text="Sync using Thread" />
+        </StackLayout>
+        
+    </Grid>
+    
+</ContentPage>
